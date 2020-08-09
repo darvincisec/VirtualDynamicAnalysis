@@ -166,17 +166,23 @@ class MainActivity : AppCompatActivity(),
     private fun initCipher(cipher: Cipher, keyName: String): Boolean {
         try {
             keyStore.load(null)
-            val file = File("/data/data/io.virtualapp/virtual/data/user/0/com.example.android.fingerprintdialog/files/secret.txt")
+            val path = getOriginalAppDir()
+            val file = File(path+"/files/secret.txt")
+            if(file.exists()) {
 
-            val fileInputStream = FileInputStream(file)
+                val fileInputStream = FileInputStream(file)
 
-            val bytes = fileInputStream.readBytes()
+                val bytes = fileInputStream.readBytes()
 
-            val ivParameterSpec = IvParameterSpec(bytes, 32, 16);
-            cipher.init(Cipher.DECRYPT_MODE, keyStore.getKey(keyName, null) as SecretKey, ivParameterSpec)
+                val ivParameterSpec = IvParameterSpec(bytes, 32, 16);
+                cipher.init(Cipher.DECRYPT_MODE, keyStore.getKey(keyName, null) as SecretKey, ivParameterSpec)
 
-            fileInputStream.close();
-            return true
+                fileInputStream.close();
+                return true
+            }else{
+                Toast.makeText(this, "Original Biometric Auth App not available", Toast.LENGTH_SHORT).show()
+                return false;
+            }
         } catch (e: Exception) {
             when (e) {
                 is KeyPermanentlyInvalidatedException -> return false
@@ -190,7 +196,32 @@ class MainActivity : AppCompatActivity(),
             }
         }
     }
+    fun getOriginalAppDir(): String {
+        val packageName = this.getPackageName()
 
+        val appDir = this.getAppDir()
+        val datapath = appDir!!.replace(packageName.toRegex(),"com.example.android.fingerprintdialog")
+
+        return datapath
+    }
+    /***
+     * Get the application directory
+     * @return App directory string
+     */
+    fun getAppDir(): String? {
+        try {
+            val pm = this.getPackageManager();
+            val packageName = this.getPackageName()
+            val p = pm.getPackageInfo(packageName, 0)
+            val appDir = p.applicationInfo.dataDir
+            Log.d(TAG, "Package Name: $packageName  Dir: $appDir")
+            return appDir
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return null
+        }
+
+    }
     /**
      * Proceed with the purchase operation
      *
@@ -225,12 +256,17 @@ class MainActivity : AppCompatActivity(),
      */
     private fun tryDecrypt(cipher: Cipher) {
         try {
-            val file = File("/data/data/io.virtualapp/virtual/data/user/0/com.example.android.fingerprintdialog/files/secret.txt")
-            val fileInputStream = FileInputStream(file)
-            val bytes = fileInputStream.readBytes()
-            showConfirmation(cipher.doFinal(bytes,0,32))
+            val path = getOriginalAppDir()
+            val file = File(path+"/files/secret.txt")
+            if(file.exists()) {
+                val fileInputStream = FileInputStream(file)
+                val bytes = fileInputStream.readBytes()
+                showConfirmation(cipher.doFinal(bytes, 0, 32))
 
-            fileInputStream.close()
+                fileInputStream.close()
+            }else{
+                Toast.makeText(this, "Original Biometric Auth App not available", Toast.LENGTH_SHORT).show()
+            }
         } catch (e: Exception) {
             when (e) {
                 is BadPaddingException,
