@@ -13,7 +13,7 @@ Google Authenticator depends on the default Security Provider. By executing it i
 
 The same case with Microsoft Authenticator
 
-![GoogleAuthenticator](GoogleAuthenticator.gif)
+![GoogleAuthenticator](MicrosoftAuthenticator.gif)
 
 ## Attacking Android Keystore
 This is to demonstrate how a Fake Biometric Authentication App installed alongside a benign Biometric Authentication app inside cloning app can make use of the AES Key generated inside Android Keystore to decrypt a secret message
