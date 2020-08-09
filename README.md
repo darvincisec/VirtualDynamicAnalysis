@@ -19,3 +19,7 @@ The same case with Microsoft Authenticator
 This is to demonstrate how a Fake Biometric Authentication App installed alongside a benign Biometric Authentication app inside cloning app can make use of the AES Key generated inside Android Keystore to decrypt a secret message
 
 ![Demo](BiometricAuthentication.gif)
+
+# Blog
+
+For more details please visit [blog](https://darvincitech.wordpress.com/2020/07/18/all-your-crypto-keys-belongs-to-me-in-android-virtual-containers)
