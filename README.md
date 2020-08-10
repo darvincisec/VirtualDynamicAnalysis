@@ -6,11 +6,14 @@ Since this app is derived from Virtual app. Please refer to VirtualApp's [declar
 
 # Demo
 
-## Attacking Security Provider
-Google Authenticator depends on the default Security Provider. By executing it inside the cloning app OTP seed used in HMAC operation can be seen easily in the logcat
+## Attacking Popular apps with fake security provider
+
+### Google Authenticator
+Google Authenticator depends on the default Security Provider. By executing it inside the cloning app OTP seed used in HMAC operation can be fetched from the logcat
 
 ![GoogleAuthenticator](GoogleAuthenticator.gif)
 
+### Microsoft Authenticator
 The same case with Microsoft Authenticator
 
 ![GoogleAuthenticator](MicrosoftAuthenticator.gif)
