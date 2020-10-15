@@ -1,7 +1,7 @@
 {
   "interaction": {
-    "type": "script",
-    "path": "/data/local/tmp/myscript.js",
-    "on_change": "reload"
+    "type": "script-directory",
+    "path": "/data/local/tmp/frida-scripts",
+    "on_change": "rescan"
   }
 }

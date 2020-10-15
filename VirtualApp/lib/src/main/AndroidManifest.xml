@@ -109,6 +109,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_PROFILE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.BATTERY_STATS" />
     <uses-permission android:name="android.permission.WRITE_SMS" />
     <uses-permission android:name="android.permission.WRITE_SOCIAL_STREAM" />
     <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />

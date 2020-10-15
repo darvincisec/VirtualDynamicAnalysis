@@ -27,6 +27,8 @@ import android.os.RemoteException;
 import android.os.StrictMode;
 import android.util.Log;
 
+
+import com.facebook.stetho.Stetho;
 import com.lody.virtual.client.core.CrashHandler;
 import com.lody.virtual.client.core.InvocationStubManager;
 import com.lody.virtual.client.core.VirtualCore;
@@ -351,6 +353,12 @@ public final class VClientImpl extends IVClient.Stub {
         }
         VActivityManager.get().appDoneExecuting();
         VirtualCore.get().getComponentDelegate().afterApplicationCreate(mInitialApplication);
+        Stetho.initialize(
+                Stetho.newInitializerBuilder(mInitialApplication)
+                        .enableDumpapp(Stetho.defaultDumperPluginsProvider(mInitialApplication))
+                        .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(mInitialApplication))
+                        .build());
+
     }
 
     private void fixWeChatRecovery(Application app) {

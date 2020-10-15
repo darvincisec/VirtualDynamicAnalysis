@@ -1110,6 +1110,7 @@ class MethodProxies {
         @Override
         public Object call(Object who, Method method, Object... args) throws Throwable {
             String permission = (String) args[0];
+
             if (SpecialComponentList.isWhitePermission(permission)) {
                 return PackageManager.PERMISSION_GRANTED;
             }
@@ -1686,6 +1687,36 @@ class MethodProxies {
             int startId = (int) args[2];
             int res = (int) args[3];
             VActivityManager.get().serviceDoneExecuting(token, type, startId, res);
+            return 0;
+        }
+
+        @Override
+        public boolean isEnable() {
+            return isAppProcess();
+        }
+    }
+
+    static class OverridePendingTransition extends MethodProxy {
+
+        @Override
+        public String getMethodName() {
+            return "overridePendingTransition";
+        }
+
+        @Override
+        public Object call(Object who, Method method, Object... args) throws Throwable {
+            try {
+                MethodParameterUtils.replaceFirstAppPkg(args);
+                for(int i = 0;i < args.length;i++){
+                    if(args[i] instanceof  Integer){
+                        args[i] = 0;
+                    }
+                }
+                return method.invoke(who,args);
+            }catch (Throwable e){
+                e.printStackTrace();
+            }
+
             return 0;
         }
 

@@ -35,5 +35,6 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-
+    compile 'com.facebook.stetho:stetho:1.5.1'
+    compile 'com.facebook.stetho:stetho-js-rhino:1.5.1'
 }

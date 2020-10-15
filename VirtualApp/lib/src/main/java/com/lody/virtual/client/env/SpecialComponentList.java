@@ -59,6 +59,7 @@ public final class SpecialComponentList {
 
         WHITE_PERMISSION.add("com.google.android.gms.settings.SECURITY_SETTINGS");
         WHITE_PERMISSION.add("com.google.android.apps.plus.PRIVACY_SETTINGS");
+        WHITE_PERMISSION.add("android.permission.DUMP");
         WHITE_PERMISSION.add(Manifest.permission.ACCOUNT_MANAGER);
 
         PROTECTED_ACTION_MAP.put(Intent.ACTION_PACKAGE_ADDED, Constants.ACTION_PACKAGE_ADDED);
@@ -75,9 +76,11 @@ public final class SpecialComponentList {
         SPEC_SYSTEM_APP_LIST.add("com.google.android.webview");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             try {
-                String webViewPkgN = IWebViewUpdateService.getCurrentWebViewPackageName.call(WebViewFactory.getUpdateService.call());
-                if (webViewPkgN != null) {
-                    SPEC_SYSTEM_APP_LIST.add(webViewPkgN);
+                if(WebViewFactory.getUpdateService.call() != null){
+                    String webViewPkgN = IWebViewUpdateService.getCurrentWebViewPackageName.call(WebViewFactory.getUpdateService.call());
+                    if (webViewPkgN != null) {
+                        SPEC_SYSTEM_APP_LIST.add(webViewPkgN);
+                    }
                 }
             } catch (Throwable e) {
                 e.printStackTrace();
