@@ -23,6 +23,11 @@ This is to demonstrate how a Fake Biometric Authentication App installed alongsi
 
 ![Demo](BiometricAuthentication.gif)
 
+## Debugging a playstore application
+This is to demonstrate any guest app can be made debuggable if the host app is debuggable
+
+![Demo](Duo-debuggable.gif)
+
 # Blog
 
 For more details please visit my 
