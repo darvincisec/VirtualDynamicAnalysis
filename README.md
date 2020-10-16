@@ -25,4 +25,7 @@ This is to demonstrate how a Fake Biometric Authentication App installed alongsi
 
 # Blog
 
-For more details please visit my [blog](https://darvincitech.wordpress.com/2020/07/18/all-your-crypto-keys-belongs-to-me-in-android-virtual-containers)
+For more details please visit my 
+[blog Part 1](https://darvincitech.wordpress.com/2020/07/18/all-your-crypto-keys-belongs-to-me-in-android-virtual-containers)
+[blog Part 2](https://darvincitech.wordpress.com/2020/10/11/virtual-dynamic-analysis-part-2)
+
