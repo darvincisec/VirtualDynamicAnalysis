@@ -1,5 +1,6 @@
 # VirtualDynamicAnalysis
 PoC app to demonstrate how to perform dynamic analysis on apps installed inside a cloning app without root or repackaging the application. This app is based on [VirtualApp](https://github.com/asLody/VirtualApp)
+Changes required to use Virtual App in 9.0 is cloned from [VirtualAppEx](https://github.com/xxxyanchenxxx/VirtualAppEx)
 
 # License and Warning
 Since this app is derived from Virtual app. Please refer to VirtualApp's [declaration](https://github.com/asLody/VirtualApp).
